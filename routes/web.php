@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+//接口路由
+$api = app('Dingo\Api\Routing\Router');
+$api->version('v1',  ['namespace' => 'App\Api\Controllers'], function ($api) {
+
+    $api->get('member/{id}', 'MemberController@show');
+});
