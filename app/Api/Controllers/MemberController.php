@@ -4,13 +4,17 @@ namespace App\Api\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class MemberController extends Controller
+class MemberController extends BaseController
 {
-    //
-    public function show(Request $request)
+
+    public function show($id)
     {
-        $params = $request->all();
-        print_r($params);
-        print_r('MemberController_show');
+//        print_r($id);
+//        $user = User::find($id);
+//        print_r($user);
+//        return $this->response->item($user, new UserTransformer);
+//        return $this->response->noContent();
+//        return $this->response->error('This is an error.', 404);
+        return $this->response->errorUnauthorized();
     }
 }
