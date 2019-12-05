@@ -14,15 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
 
 
 
-Route::group([
-    'middleware' => 'api',
-    'prefix' => 'auth'
-], function ($router) {
-    Route::get('/sss', function (){
-        echo '222';
+Route::group(['middleware' => 'api','prefix' => 'auth'], function ($router) {
+    Route::get('testy', function (){
+        echo 'testy';
     });
     Route::post('login', 'AuthController@login');
     Route::post('register', 'AuthController@register');
@@ -45,7 +44,6 @@ app('api.exception')->register(function (Exception $exception) {
 $api->version('v1', ['namespace' => 'App\Api\Controllers'], function ($api) {
 
     $api->get('member/{id}', 'MemberController@show');
+    $api->post('member', 'MemberController@create');
 });
 
-Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
