@@ -232,10 +232,12 @@ return [
     | on every request.
     |
     | Set grace period in seconds to prevent parallel request failure.
+    | 当多个并发请求使用相同的JWT进行时，由于 access_token 的刷新 ，其中一些可能会失败，
+    | 以秒为单位设置请求时间以防止并发的请求失败
     |
     */
 
-    'blacklist_grace_period' => env('JWT_BLACKLIST_GRACE_PERIOD', 0),
+    'blacklist_grace_period' => env('JWT_BLACKLIST_GRACE_PERIOD', 60),
 
     /*
     |--------------------------------------------------------------------------

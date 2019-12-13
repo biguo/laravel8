@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Api\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
@@ -9,7 +9,7 @@ use Tymon\JWTAuth\Blacklist;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 
-class AuthController extends Controller
+class AuthController extends BaseController
 {
 
     /**

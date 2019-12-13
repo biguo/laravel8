@@ -17,22 +17,6 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
-
-
-Route::group(['middleware' => 'api','prefix' => 'auth'], function ($router) {
-    Route::get('testy', function (){
-        echo 'testy';
-    });
-    Route::post('login', 'AuthController@login');
-    Route::post('register', 'AuthController@register');
-    Route::post('logout', 'AuthController@logout');
-    Route::post('refresh', 'AuthController@refresh');
-    Route::post('me', 'AuthController@me');
-    Route::post('refreshTest', 'AuthController@refreshTest');
-    Route::post('useTest', 'AuthController@useTest');
-});
-
-
 //接口路由
 $api = app('Dingo\Api\Routing\Router');
 
@@ -47,5 +31,14 @@ $api->version('v1', ['namespace' => 'App\Api\Controllers'], function ($api) {
 
     $api->get('member/{id}', 'MemberController@show');
     $api->post('member', 'MemberController@create');
+
+//    jwt 系列
+    $api->post('user/login', 'AuthController@login');  //登录授权
+    $api->post('user/register', 'AuthController@register');
+    $api->post('user/logout', 'AuthController@logout');
+    $api->post('user/refresh', 'AuthController@refresh');
+    $api->post('user/me', 'AuthController@me');
+    $api->post('user/refreshTest', 'AuthController@refreshTest');
+    $api->post('user/useTest', 'AuthController@useTest');
 });
 

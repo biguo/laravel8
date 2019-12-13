@@ -46,6 +46,11 @@ class RefreshToken extends BaseMiddleware
                 return response()->json(['code' => 402, 'data' => [], 'msg' => $exception->getMessage()]);
             }
         }
+//        这个问题答案简单，在response 的header中设置authorization。
+//   关键点：后端一般使用的域名是二级域名比如我的是api.xx.com,会和前端产生一个跨域的影响，请记得一定要设置
+//   `$response->headers->set('Access-Control-Expose-Headers', 'Authorization');`
+//   设置跨域的时候还要设置一个Cache-Control,这个东西出现的问题真的是莫名其妙，坑了我很久..
+//   `$response->headers->set('Cache-Control', 'no-store'); // 无的话会导致前端从缓存获取头token`
         return $this->setAuthenticationHeader($next($request), $token);
     }
 }

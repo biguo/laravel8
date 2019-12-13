@@ -164,11 +164,17 @@ return [
     |
     | The authentication providers that should be used when attempting to
     | authenticate an incoming API request.
+    | 连接jwt 和 Dingo
     |
     */
 
     'auth' => [
-
+        'basic' => function($app){
+            return new Dingo\Api\Auth\Provider\Basic($app['auth']);
+        },
+        'jwt' => function($app){
+            return new Dingo\Api\Auth\Provider\JWT($app['Tymon\JWTAuth\JWTAuth']);
+        }
     ],
 
     /*
