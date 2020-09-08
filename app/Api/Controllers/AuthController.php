@@ -95,9 +95,9 @@ class AuthController extends BaseController
 
     public function refresh()
     {
-//        $old_token = JWTAuth::getToken();
-//        $token = JWTAuth::refresh($old_token);
-//        JWTAuth::setToken($token);
+        $old_token = JWTAuth::getToken();
+        $token = JWTAuth::refresh($old_token);
+        JWTAuth::setToken($token);
 //        return $this->respondWithToken($token);
         return $this->respondWithToken(auth('api')->refresh());
     }

@@ -43,9 +43,13 @@
         "psr-4": {
             "App\\": "app/"
         },
+        "files": [
+            "app/Helpers/functions.php"
+        ],
         "classmap": [
             "database/seeds",
-            "database/factories"
+            "database/factories",
+            "app/Tools/weworkapi_php/api/src"
         ]
     },
     "autoload-dev": {
